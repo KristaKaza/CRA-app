@@ -1,22 +1,14 @@
 // Product.js
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
   return (
-    <div className="product-card">
-      <img
-        src={product.image?.url}
-        alt={product.image?.alt || "Product image"}
-      />
-      <h2>{product.title}</h2>
+    <div className="product">
+      <img src={product.image.url} alt={product.image.alt} />
+      <h3>{product.title}</h3>
       <p>{product.description}</p>
-      <p>Price: ${product.price.toFixed(2)}</p>
-      <p>Discounted Price: ${product.discountedPrice.toFixed(2)}</p>
-      <p>Rating: {product.rating}</p>
-
-      {/* Link to the product page */}
-      <Link to={`/product/${product.id}`}>View Product</Link>
+      <p>Price: ${product.price}</p>
+      {/* Removed View Product link from here */}
     </div>
   );
 };
