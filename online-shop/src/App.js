@@ -8,6 +8,7 @@ import CheckoutSuccessPage from "./pages/CheckoutSuccessPage";
 import Layout from "./components/Layout";
 import "./scss/styles.scss";
 import React, { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [products, setProducts] = useState([]);
