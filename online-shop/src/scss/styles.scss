@@ -110,3 +110,46 @@ header {
     }
   }
 }
+
+/** Cart Icon and Success page **/
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cart-item-image {
+  width: 50px; /* Set a fixed width */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 15px; /* Space between image and text */
+}
+
+.cart-page {
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+  }
+
+  h2 {
+    margin-top: 20px;
+  }
+}
+
+.checkout-success {
+  text-align: center;
+  margin: 50px 0;
+
+  h1 {
+    color: green;
+  }
+}

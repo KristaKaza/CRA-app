@@ -2,15 +2,18 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
+import CartPage from "./pages/CartPage";
 import ContactPage from "./pages/ContactPage";
+import CheckoutSuccessPage from "./pages/CheckoutSuccessPage";
 import Layout from "./components/Layout";
 import "./scss/styles.scss";
 import React, { useEffect, useState } from "react";
 
 function App() {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true); // This will handle loading state
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cartItemCount, setCartItemCount] = useState(0);
 
   const fetchProducts = async () => {
     try {
@@ -26,7 +29,7 @@ function App() {
       console.error("Fetch products error:", error);
       setError(error.message);
     } finally {
-      setLoading(false); // Ensure loading is set to false regardless of the outcome
+      setLoading(false);
     }
   };
 
@@ -34,18 +37,41 @@ function App() {
     fetchProducts();
   }, []);
 
-  if (loading) return <div>Loading...</div>; // Show a loading message
-  if (error) return <div>Error: {error}</div>; // Handle errors gracefully
+  useEffect(() => {
+    const calculateCartItemCount = () => {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const totalItems = cart.reduce(
+        (total, item) => total + (item.quantity || 1),
+        0
+      );
+      setCartItemCount(totalItems);
+    };
+
+    calculateCartItemCount();
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <Router>
-      <Layout products={products}>
-        {" "}
-        {/* Pass products to Layout */}
+      <Layout products={products} cartItemCount={cartItemCount}>
         <Routes>
-          <Route path="/" element={<HomePage products={products} />} />{" "}
-          {/* Pass products to HomePage */}
-          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/" element={<HomePage products={products} />} />
+          <Route
+            path="/product/:id"
+            element={
+              <ProductPage
+                products={products}
+                setCartItemCount={setCartItemCount}
+              />
+            }
+          />
+          <Route
+            path="/cart"
+            element={<CartPage setCartItemCount={setCartItemCount} />}
+          />
+          <Route path="/checkout" element={<CheckoutSuccessPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </Layout>

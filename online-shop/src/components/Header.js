@@ -1,10 +1,11 @@
 // Header.js
 import React from "react";
 import { Link } from "react-router-dom";
-import CartIcon from "./CartIcon"; // Assuming you already have CartIcon component
-import SearchBar from "./SearchBar"; // Importing the SearchBar component
+import CartIcon from "./CartIcon";
+import SearchBar from "./SearchBar";
 
-const Header = ({ products }) => {
+const Header = ({ products, cartItemCount }) => {
+  // Add cartItemCount here
   return (
     <header>
       <nav>
@@ -17,7 +18,8 @@ const Header = ({ products }) => {
           </li>
         </ul>
         <SearchBar products={products} /> {/* Search bar component */}
-        <CartIcon /> {/* Cart icon displayed */}
+        <CartIcon itemCount={cartItemCount} />{" "}
+        {/* Pass item count to CartIcon */}
       </nav>
     </header>
   );

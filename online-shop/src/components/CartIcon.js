@@ -1,7 +1,7 @@
 // CartIcon.js
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa"; // Make sure this import is correct
+import { FaShoppingCart } from "react-icons/fa";
 
 const CartIcon = ({ itemCount }) => {
   return (

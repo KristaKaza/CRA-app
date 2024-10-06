@@ -1,52 +1,40 @@
 // ProductPage.js
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 
-const ProductPage = () => {
-  const { id } = useParams(); // Get the product ID from the URL
-  const [product, setProduct] = useState(null); // Initial state is null
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const ProductPage = ({ products, setCartItemCount }) => {
+  const { id } = useParams();
+  const product = products.find((product) => product.id === id);
 
-  // Fetch the product based on the ID
-  const fetchProduct = async () => {
-    try {
-      const response = await fetch(
-        `https://v2.api.noroff.dev/online-shop/${id}`
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch product");
-      }
-      const result = await response.json();
-      setProduct(result); // Assume the product data is directly in the result
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
+  const addToCart = () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Check if the item is already in the cart
+    const existingItem = cart.find((item) => item.id === product.id);
+    if (existingItem) {
+      existingItem.quantity += 1; // Increment quantity if exists
+    } else {
+      const newItem = {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        discountedPrice: product.discountedPrice,
+        image: product.image,
+        quantity: 1, // Set initial quantity to 1
+      };
+      cart.push(newItem); // Add new item to cart
     }
+
+    localStorage.setItem("cart", JSON.stringify(cart)); // Save updated cart to localStorage
+    setCartItemCount(cart.reduce((total, item) => total + item.quantity, 0)); // Update total item count
   };
 
-  useEffect(() => {
-    fetchProduct();
-  }, [id]);
-
-  // Show loading state while the data is being fetched
-  if (loading) return <div>Loading product...</div>;
-
-  // Show error if fetching failed
-  if (error) return <div>Error: {error}</div>;
-
-  // Safeguard if product is null or undefined
-  if (!product) return <div>Product not found</div>;
-
-  // Now that we have the product, render its details
   return (
     <div>
       <h1>{product.title}</h1>
-      <p>{product.description}</p>
-      {/* Ensure price is available before using toFixed */}
-      <p>Price: ${product.price ? product.price.toFixed(2) : "N/A"}</p>
-      <img src={product.image} alt={product.title} />
+      <img src={product.image.url} alt={product.title} />
+      <p>Price: ${(product.discountedPrice || product.price).toFixed(2)}</p>
+      <button onClick={addToCart}>Add to Cart</button>
     </div>
   );
 };
