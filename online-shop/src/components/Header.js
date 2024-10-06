@@ -6,11 +6,10 @@ import SearchBar from "./SearchBar";
 
 const Header = ({ products, cartItemCount }) => {
   return (
-    <header className="container-fluid bg-light p-3 border-bottom">
+    <header className="container-fluid p-3 border-bottom">
       <div className="row align-items-center">
-        {/* Logo */}
         <div className="col-md-3">
-          <h1 className="h3 mb-0">E-Com</h1>
+          <h1 className="h3 mb-0 logo">E-Com</h1>
         </div>
 
         {/* Navigation Links */}

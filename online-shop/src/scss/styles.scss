@@ -1,22 +1,24 @@
 /* styles.css */
 header {
-  background-color: #f9f9f9;
-  padding: 1rem;
+  background-color: #1e4e61;
+  /*  padding: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; */
 }
 
-.nav-links {
+/* .nav-links {
   list-style: none;
   display: flex;
   flex-direction: row;
-  gap: 2rem; /* Spacing between links */
+  gap: 2rem;
 }
-
-.nav-links a {
-  color: rgb(0, 0, 0);
+ */
+.nav-link a,
+.nav-link,
+.logo {
+  color: white;
   text-decoration: none;
 }
 
@@ -40,8 +42,11 @@ header {
   z-index: 10;
 }
 
-.search-results li {
+.search-results li,
+.search-results a {
   padding: 0.5rem;
+  color: #313638;
+  text-decoration: none;
 }
 
 .search-results li:hover {
@@ -119,9 +124,9 @@ header {
 }
 
 .cart-item-image {
-  width: 50px; /* Set a fixed width */
-  height: auto; /* Maintain aspect ratio */
-  margin-right: 15px; /* Space between image and text */
+  width: 50px;
+  height: auto;
+  margin-right: 15px;
 }
 
 .cart-page {
@@ -152,4 +157,29 @@ header {
   h1 {
     color: green;
   }
+}
+
+body {
+  background-color: #e8e9eb;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  padding: 20px;
+}
+
+.card {
+  background-color: white;
+}
+
+.view-btn {
+  background-color: #1e4e61;
+  color: white;
+}
+
+.view-btn:hover {
+  background-color: #18617e;
+  color: white;
 }
