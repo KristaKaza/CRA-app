@@ -3,13 +3,6 @@ header {
   background-color: #538083;
 }
 
-/* .nav-links {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-}
- */
 .nav-link a,
 .nav-link,
 .logo {
@@ -177,23 +170,18 @@ body {
   color: white;
 }
 
-/* styles.scss */
-
-/* Style for the cart item image */
 .cart-item-image {
   width: 100px;
   height: 100px;
   object-fit: cover;
 }
 
-/* Original price with strikethrough */
 .original-price {
   text-decoration: line-through;
   margin-right: 10px;
-  color: #888; /* A light grey color for the original price */
+  color: #888;
 }
 
-/* Discounted price in red */
 .discounted-price {
   color: red;
   font-weight: bold;
