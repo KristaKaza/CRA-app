@@ -1,11 +1,6 @@
 /* styles.css */
 header {
-  background-color: #1e4e61;
-  /*  padding: 1rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center; */
+  background-color: #538083;
 }
 
 /* .nav-links {
@@ -163,12 +158,12 @@ body {
 }
 
 .view-btn {
-  background-color: #1e4e61;
+  background-color: #538083;
   color: white;
 }
 
 .view-btn:hover {
-  background-color: #18617e;
+  background-color: #29585b;
   color: white;
 }
 

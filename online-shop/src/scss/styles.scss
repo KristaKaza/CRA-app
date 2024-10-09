@@ -1,6 +1,6 @@
 /* styles.css */
 header {
-  background-color: #1e4e61;
+  background-color: #538083;
 }
 
 /* .nav-links {
@@ -169,12 +169,14 @@ body {
   background-color: white;
 }
 
-.view-btn {
-  background-color: #1e4e61;
+.view-btn,
+.addCart {
+  background-color: #538083;
   color: white;
 }
 
-.view-btn:hover {
-  background-color: #18617e;
+.view-btn:hover,
+.addCart:hover {
+  background-color: #29585b;
   color: white;
 }
