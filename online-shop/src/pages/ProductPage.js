@@ -21,10 +21,9 @@ const ProductPage = ({ products, setCartItemCount }) => {
   const addToCart = () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    // Check if the item is already in the cart
     const existingItem = cart.find((item) => item.id === product.id);
     if (existingItem) {
-      existingItem.quantity += 1; // Increment quantity if exists
+      existingItem.quantity += 1;
     } else {
       const newItem = {
         id: product.id,
@@ -32,13 +31,13 @@ const ProductPage = ({ products, setCartItemCount }) => {
         price: product.price,
         discountedPrice: product.discountedPrice,
         image: product.image,
-        quantity: 1, // Set initial quantity to 1
+        quantity: 1,
       };
-      cart.push(newItem); // Add new item to cart
+      cart.push(newItem);
     }
 
-    localStorage.setItem("cart", JSON.stringify(cart)); // Save updated cart to localStorage
-    setCartItemCount(cart.reduce((total, item) => total + item.quantity, 0)); // Update total item count
+    localStorage.setItem("cart", JSON.stringify(cart));
+    setCartItemCount(cart.reduce((total, item) => total + item.quantity, 0));
   };
 
   return (
@@ -49,37 +48,34 @@ const ProductPage = ({ products, setCartItemCount }) => {
           <img
             src={product.image.url}
             alt={product.image.alt}
-            className="img-fluid mb-4"
-            style={{ maxHeight: "500px", objectFit: "cover" }}
+            className="img-fluid mb-4 product-image"
           />
 
           {/* Product Title */}
-          <h1>{product.title}</h1>
+          <h1 className="mb-3">{product.title}</h1>
 
           {/* Product Description */}
-          <p className="lead">{product.description}</p>
+          <p className="lead mb-4">{product.description}</p>
 
           {/* Product Price and Discount */}
-          <div className="price-info">
+          <div>
             {product.discountedPrice < product.price ? (
-              <>
-                <p>
-                  <span style={{ textDecoration: "line-through" }}>
-                    ${product.price}
-                  </span>{" "}
-                  <span style={{ color: "red", fontWeight: "bold" }}>
-                    ${product.discountedPrice}
-                  </span>{" "}
-                  <span className="text-success">({discount}% OFF)</span>
-                </p>
-              </>
+              <p>
+                <span className="text-decoration-line-through text-muted me-2">
+                  ${product.price}
+                </span>
+                <span className="text-danger fw-bold">
+                  ${product.discountedPrice}
+                </span>{" "}
+                <span className="text-success">({discount}% OFF)</span>
+              </p>
             ) : (
               <p>Price: ${product.price}</p>
             )}
           </div>
 
           {/* Add to Cart Button */}
-          <button className="btn mb-4 addCart" onClick={addToCart}>
+          <button className="btn addCart mb-4" onClick={addToCart}>
             Add to Cart
           </button>
 
