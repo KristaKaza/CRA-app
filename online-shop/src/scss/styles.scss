@@ -190,6 +190,11 @@ body {
 .product-image {
   max-width: 100%;
   height: auto;
-  max-height: 500px;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.cardImg {
+  height: 300px;
   object-fit: cover;
 }
