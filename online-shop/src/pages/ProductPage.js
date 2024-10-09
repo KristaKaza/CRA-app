@@ -6,6 +6,8 @@ const ProductPage = ({ products, setCartItemCount }) => {
   const { id } = useParams();
   const product = products.find((product) => product.id === id);
 
+  console.log("Product Data: ", product); // Log the product data
+
   if (!product) {
     return <p>Product not found!</p>;
   }
