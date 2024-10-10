@@ -5,10 +5,17 @@ import { FaShoppingCart } from "react-icons/fa";
 
 const CartIcon = ({ itemCount }) => {
   return (
-    <div className="cart-icon">
-      <Link to="/cart">
+    <div className="position-relative ml-3">
+      <Link to="/cart" className="text-dark">
         <FaShoppingCart size={24} />
-        {itemCount > 0 && <span className="item-count">{itemCount}</span>}
+        {itemCount > 0 && (
+          <span
+            className="badge badge-danger position-absolute"
+            style={{ top: "-10px", right: "-10px" }}
+          >
+            {itemCount}
+          </span>
+        )}
       </Link>
     </div>
   );

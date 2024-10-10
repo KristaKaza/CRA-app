@@ -5,22 +5,31 @@ import CartIcon from "./CartIcon";
 import SearchBar from "./SearchBar";
 
 const Header = ({ products, cartItemCount }) => {
-  // Add cartItemCount here
   return (
-    <header>
-      <nav>
-        <ul className="nav-links">
-          <li>
-            <Link to="/">Home</Link> {/* Link to Home */}
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link> {/* Link to Contact */}
-          </li>
-        </ul>
-        <SearchBar products={products} /> {/* Search bar component */}
-        <CartIcon itemCount={cartItemCount} />{" "}
-        {/* Pass item count to CartIcon */}
-      </nav>
+    <header className="container-fluid p-3 border-bottom">
+      <div className="row align-items-center">
+        <div className="col-md-3">
+          <h1 className="h3 mb-0 logo">E-Com</h1>
+        </div>
+
+        {/* Navigation Links */}
+        <div className="col-md-6">
+          <nav className="d-flex justify-content-center gap-3">
+            <Link to="/" className="nav-link">
+              Home
+            </Link>
+            <Link to="/contact" className="nav-link">
+              Contact
+            </Link>
+          </nav>
+        </div>
+
+        {/* Search and Cart Icon */}
+        <div className="col-md-3 d-flex">
+          <SearchBar products={products} />
+          <CartIcon itemCount={cartItemCount} />
+        </div>
+      </div>
     </header>
   );
 };
