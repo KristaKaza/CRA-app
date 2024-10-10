@@ -64,6 +64,9 @@ header {
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+.contact-page .invalid-feedback {
+  display: block;
+}
 .contact-page h2 {
   text-align: center;
   margin-bottom: 20px;
@@ -83,19 +86,6 @@ header {
 .contact-page .error {
   color: red;
   font-size: 0.9em;
-}
-.contact-page button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.contact-page button:hover {
-  background-color: #0056b3;
 }
 
 /** Cart Icon and Success page **/
@@ -146,14 +136,17 @@ body {
 
 .view-btn,
 .addCart,
-.checkout {
+.checkout,
+.submit {
   background-color: #538083;
   color: white;
 }
 
 .view-btn:hover,
 .addCart:hover,
-.checkout:hover {
+.checkout:hover,
+.submit:hover,
+.btn:active {
   background-color: #29585b;
   color: white;
 }

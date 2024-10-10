@@ -1,5 +1,5 @@
-// ContactPage.js
 import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -30,7 +30,7 @@ const ContactPage = () => {
       newErrors.email = "Email must be a valid email address.";
     }
     if (body.trim().length < 3) {
-      newErrors.body = "Body must be at least 3 characters long.";
+      newErrors.body = "Message body must be at least 3 characters long.";
     }
 
     return newErrors;
@@ -44,7 +44,6 @@ const ContactPage = () => {
       setErrors(validationErrors);
     } else {
       setErrors({});
-      // Here, you would typically send formData to your API
       console.log("Form submitted successfully:", formData);
       // Clear the form
       setFormData({ fullName: "", subject: "", email: "", body: "" });
@@ -52,61 +51,82 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="contact-page">
-      <h2>Contact Us</h2>
+    <div className="container mt-5 contact-page">
+      <h2 className="text-center mb-4">Contact Us</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="fullName">Full Name</label>
+        <div className="mb-3">
+          <label htmlFor="fullName" className="form-label">
+            Full Name
+          </label>
           <input
             type="text"
+            className={`form-control ${errors.fullName ? "is-invalid" : ""}`}
             id="fullName"
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
             required
           />
-          {errors.fullName && <span className="error">{errors.fullName}</span>}
+          {errors.fullName && (
+            <div className="invalid-feedback">{errors.fullName}</div>
+          )}
         </div>
 
-        <div>
-          <label htmlFor="subject">Subject</label>
+        <div className="mb-3">
+          <label htmlFor="subject" className="form-label">
+            Subject
+          </label>
           <input
             type="text"
+            className={`form-control ${errors.subject ? "is-invalid" : ""}`}
             id="subject"
             name="subject"
             value={formData.subject}
             onChange={handleChange}
             required
           />
-          {errors.subject && <span className="error">{errors.subject}</span>}
+          {errors.subject && (
+            <div className="invalid-feedback">{errors.subject}</div>
+          )}
         </div>
 
-        <div>
-          <label htmlFor="email">Email</label>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">
+            Email
+          </label>
           <input
             type="email"
+            className={`form-control ${errors.email ? "is-invalid" : ""}`}
             id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
             required
           />
-          {errors.email && <span className="error">{errors.email}</span>}
+          {errors.email && (
+            <div className="invalid-feedback">{errors.email}</div>
+          )}
         </div>
 
-        <div>
-          <label htmlFor="body">Message</label>
+        <div className="mb-3">
+          <label htmlFor="body" className="form-label">
+            Message
+          </label>
           <textarea
+            className={`form-control ${errors.body ? "is-invalid" : ""}`}
             id="body"
             name="body"
+            rows="4"
             value={formData.body}
             onChange={handleChange}
             required
           ></textarea>
-          {errors.body && <span className="error">{errors.body}</span>}
+          {errors.body && <div className="invalid-feedback">{errors.body}</div>}
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" className="btn d-grid mx-auto col-12 submit">
+          Submit
+        </button>
       </form>
     </div>
   );
