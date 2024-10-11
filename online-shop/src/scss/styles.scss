@@ -1,22 +1,12 @@
 /* styles.css */
 header {
-  background-color: #f9f9f9;
-  padding: 1rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  background-color: #538083;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  gap: 2rem; /* Spacing between links */
-}
-
-.nav-links a {
-  color: rgb(0, 0, 0);
+.nav-link a,
+.nav-link,
+.logo {
+  color: white;
   text-decoration: none;
 }
 
@@ -40,8 +30,11 @@ header {
   z-index: 10;
 }
 
-.search-results li {
+.search-results li,
+.search-results a {
   padding: 0.5rem;
+  color: #313638;
+  text-decoration: none;
 }
 
 .search-results li:hover {
@@ -71,6 +64,10 @@ header {
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
+  .invalid-feedback {
+    display: block;
+  }
+
   h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -94,21 +91,6 @@ header {
     color: red;
     font-size: 0.9em;
   }
-
-  button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #0056b3;
-    }
-  }
 }
 
 /** Cart Icon and Success page **/
@@ -116,12 +98,6 @@ header {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-}
-
-.cart-item-image {
-  width: 50px; /* Set a fixed width */
-  height: auto; /* Maintain aspect ratio */
-  margin-right: 15px; /* Space between image and text */
 }
 
 .cart-page {
@@ -152,4 +128,65 @@ header {
   h1 {
     color: green;
   }
+}
+
+body {
+  background-color: #e8e9eb;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  padding: 20px;
+}
+
+.card {
+  background-color: white;
+}
+
+.view-btn,
+.addCart,
+.checkout,
+.submit {
+  background-color: #538083;
+  color: white;
+}
+
+.view-btn:hover,
+.addCart:hover,
+.checkout:hover,
+.submit:hover,
+:not(.btn-check) + .btn:active {
+  background-color: #29585b;
+  color: white;
+}
+
+.cart-item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.original-price {
+  text-decoration: line-through;
+  margin-right: 10px;
+  color: #888;
+}
+
+.discounted-price {
+  color: red;
+  font-weight: bold;
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.cardImg {
+  height: 300px;
+  object-fit: cover;
 }
