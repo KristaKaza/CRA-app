@@ -35,6 +35,7 @@ cd online-shop
 npm install
 npm start
 npm run build
+```
 
-## Contact 
+# Contact 
 If you are interested in more details or want to get in contact with me, you are welcome to send an email at kristakaz@hotmail.com
