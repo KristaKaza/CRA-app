@@ -1,54 +1,32 @@
-import React, { useEffect, useState } from "react";
-import Product from "../components/Product"; // Ensure the correct path to the Product component
+// HomePage.js
+import React from "react";
+import Product from "../components/Product";
+import { Helmet } from "react-helmet";
 
-const HomePage = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  // Function to fetch products from the API
-  const fetchProducts = async () => {
-    try {
-      const response = await fetch("https://v2.api.noroff.dev/online-shop");
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const result = await response.json();
-      console.log("Fetched Data:", result); // Logs the full response
-      setProducts(result.data); // Ensure you're setting the data array
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  // Loading state
-  if (loading) {
-    return <div>Loading products...</div>;
-  }
-
-  // Error state
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  // Products check
-  if (!Array.isArray(products) || products.length === 0) {
-    return <div>No products available.</div>;
-  }
-
-  // Displaying the fetched products
+const HomePage = ({ products }) => {
   return (
-    <div className="products-grid">
-      {products.map((product) => (
-        <Product key={product.id} product={product} /> // Use Product component for each item
-      ))}
+    <div className="container mt-5">
+      <Helmet>
+        <title>Home - E-Com</title>
+        <meta
+          name="description"
+          content="Welcome to E-Com, your online shop for the best products."
+        />
+      </Helmet>
+
+      <h2 className="text-center mb-4">Featured Products</h2>
+
+      <div className="row">
+        {Array.isArray(products) && products.length > 0 ? (
+          products.map((product) => (
+            <div key={product.id} className="col-lg-4 col-md-6 mb-4">
+              <Product product={product} />
+            </div>
+          ))
+        ) : (
+          <div className="col-12 text-center">No products available</div>
+        )}
+      </div>
     </div>
   );
 };
