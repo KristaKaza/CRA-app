@@ -29,7 +29,7 @@ const SearchBar = ({ products }) => {
       </label>
       <input
         type="text"
-        id="product-search" // Set the id to associate with the label
+        id="product-search"
         value={searchTerm}
         onChange={handleInputChange}
         placeholder="Search products..."

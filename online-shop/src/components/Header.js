@@ -1,4 +1,4 @@
-import { Collapse } from "bootstrap"; // Import Collapse directly
+import { Collapse } from "bootstrap";
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import CartIcon from "./CartIcon";
@@ -91,7 +91,6 @@ const Header = ({ products, cartItemCount }) => {
               </li>
             </ul>
 
-            {/* Search and Cart Icon (Right-aligned) */}
             <div className="d-flex align-items-center flex-wrap">
               <SearchBar products={products} />
               <CartIcon itemCount={cartItemCount} />
