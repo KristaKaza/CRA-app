@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet"; // Import Helmet
+import { Helmet } from "react-helmet";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const ProductPage = ({ products, setCartItemCount }) => {
