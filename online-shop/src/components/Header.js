@@ -5,6 +5,7 @@ import CartIcon from "./CartIcon";
 import SearchBar from "./SearchBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+
 const Header = ({ products, cartItemCount }) => {
   const navRef = useRef(null);
 
@@ -36,14 +37,22 @@ const Header = ({ products, cartItemCount }) => {
 
     // Add event listeners when the component mounts
     document.addEventListener("mousedown", handleClickOutside);
-    navRef.current.addEventListener("mouseleave", handleMouseLeave);
+
+    // Use a local variable to store the current ref for the cleanup function
+    const currentNavRef = navRef.current;
+
+    if (currentNavRef) {
+      currentNavRef.addEventListener("mouseleave", handleMouseLeave);
+    }
 
     // Remove event listeners when the component unmounts
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-      navRef.current.removeEventListener("mouseleave", handleMouseLeave);
+      if (currentNavRef) {
+        currentNavRef.removeEventListener("mouseleave", handleMouseLeave);
+      }
     };
-  }, []);
+  }, []); // Empty dependency array ensures this effect only runs once
 
   return (
     <header className="container-fluid p-3 border-bottom">
