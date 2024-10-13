@@ -1,4 +1,3 @@
-// SearchBar.js
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -24,8 +23,13 @@ const SearchBar = ({ products }) => {
 
   return (
     <div className="search-bar">
+      {/* Add a label for the input */}
+      <label htmlFor="product-search" className="visually-hidden">
+        Search products
+      </label>
       <input
         type="text"
+        id="product-search" // Set the id to associate with the label
         value={searchTerm}
         onChange={handleInputChange}
         placeholder="Search products..."
