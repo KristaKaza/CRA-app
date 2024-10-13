@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet"; // Import Helmet
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const CartPage = ({ setCartItemCount }) => {
@@ -19,6 +20,14 @@ const CartPage = ({ setCartItemCount }) => {
 
   return (
     <div className="container mt-5">
+      <Helmet>
+        <title>Your Cart - E-Com Shop</title>
+        <meta
+          name="description"
+          content="View the items in your cart and proceed to checkout."
+        />
+      </Helmet>
+
       <div className="row justify-content-center">
         <div className="col-md-8">
           <h2 className="text-center mb-4">Your Cart</h2>

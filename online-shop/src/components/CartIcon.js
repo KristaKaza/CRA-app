@@ -5,7 +5,7 @@ import { FaShoppingCart } from "react-icons/fa";
 
 const CartIcon = ({ itemCount }) => {
   return (
-    <div className="position-relative ml-3">
+    <div className="position-relative ps-2">
       <Link to="/cart" className="text-dark">
         <FaShoppingCart size={24} />
         {itemCount > 0 && (
