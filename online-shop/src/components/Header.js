@@ -5,6 +5,7 @@ import CartIcon from "./CartIcon";
 import SearchBar from "./SearchBar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import Loader from "./Loader";
 
 const Header = ({ products, cartItemCount }) => {
   const navRef = useRef(null);
