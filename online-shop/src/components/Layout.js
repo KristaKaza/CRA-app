@@ -4,11 +4,10 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 const Layout = ({ children, products, cartItemCount }) => {
-  // Add cartItemCount here
   return (
-    <div>
-      <Header products={products} cartItemCount={cartItemCount} />{" "}
-      <main>{children}</main>
+    <div className="d-flex flex-column min-vh-100">
+      <Header products={products} cartItemCount={cartItemCount} />
+      <main className="flex-grow-1">{children}</main>
       <Footer />
     </div>
   );

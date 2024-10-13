@@ -1,9 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet"; // Import Helmet
 
 const CheckoutSuccessPage = () => {
   return (
     <div className="checkout-success">
+      <Helmet>
+        <title>Checkout Success - E-Com Shop</title>
+        <meta
+          name="description"
+          content="Thank you for your purchase. Your checkout was successful!"
+        />
+      </Helmet>
+
       <h1>Checkout Successful!</h1>
       <p>Thank you for your order!</p>
       <Link to="/">

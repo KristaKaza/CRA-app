@@ -1,5 +1,7 @@
+// ContactPage.js
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Helmet } from "react-helmet";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -52,6 +54,11 @@ const ContactPage = () => {
 
   return (
     <div className="container mt-5 contact-page">
+      <Helmet>
+        <title>Contact Us - E-Com</title>
+        <meta name="description" content="Get in touch with us at E-Com." />
+      </Helmet>
+
       <h2 className="text-center mb-4">Contact Us</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">

@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet"; // Import Helmet
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const ProductPage = ({ products, setCartItemCount }) => {
@@ -44,6 +45,12 @@ const ProductPage = ({ products, setCartItemCount }) => {
 
   return (
     <div className="container mt-5">
+      {/* Helmet for setting dynamic page title and meta description */}
+      <Helmet>
+        <title>{product.title} - E-Com Shop</title>
+        <meta name="description" content={product.description} />
+      </Helmet>
+
       <div className="row justify-content-center">
         <div className="col-md-8 text-center">
           {/* Product Image */}
